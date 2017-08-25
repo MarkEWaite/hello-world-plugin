@@ -88,8 +88,8 @@
              ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
              ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
         -->
-         <checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
-         <checkstyle.suppressions.location>src/test/resources/checkstyle-suppressions.xml</checkstyle.suppressions.location>
+         <!--<checkstyle.config.location>sun_checks.xml</checkstyle.config.location>-->
+         <!--<checkstyle.suppressions.location>src/test/resources/checkstyle-suppressions.xml</checkstyle.suppressions.location>-->
     </properties>
 
     <repositories>
@@ -155,30 +155,35 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-checkstyle-plugin</artifactId>
-                 <version>2.17</version>
-                 <configuration>
-                     <consoleOutput>true</consoleOutput>
-                     <encoding>UTF-8</encoding>
-                     <failOnViolation>true</failOnViolation>
-                     <failsOnError>true</failsOnError>
-                     <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                     <linkXRef>false</linkXRef>
-                 </configuration>
-                 <executions>
-                     <execution>
-                         <id>checkstyle-compile</id>
-                         <phase>compile</phase>
-                         <goals>
-                             <goal>check</goal>
-                         </goals>
-                     </execution>
-                 </executions>
-             </plugin>
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <consoleOutput>true</consoleOutput>
+          <encoding>UTF-8</encoding>
+          <failOnViolation>true</failOnViolation>
+          <failsOnError>true</failsOnError>
+          <includeTestSourceDirectory>false</includeTestSourceDirectory>
+          <linkXRef>false</linkXRef>
+        </configuration>
+        <executions>
+          <execution>
+            <id>checkstyle-compile</id>
+            <phase>compile</phase>
+            <configuration>
+              <configLocation>sun_checks.xml</configLocation>
+              <suppressionsLocation>${basedir}/config/checkstyle-suppressions.xml</suppressionsLocation>
+            </configuration>
+
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
