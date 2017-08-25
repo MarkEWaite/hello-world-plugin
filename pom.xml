@@ -88,8 +88,8 @@
              ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
              ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
         -->
-         <checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
-         <checkstyle.suppressions.location>src/test/resources/checkstyle-suppressions.xml</checkstyle.suppressions.location>
+         <!--<checkstyle.config.location>sun_checks.xml</checkstyle.config.location>-->
+         <!--<checkstyle.suppressions.location>src/test/resources/checkstyle-suppressions.xml</checkstyle.suppressions.location>-->
     </properties>
 
     <repositories>
