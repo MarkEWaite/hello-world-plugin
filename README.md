@@ -1,6 +1,6 @@
-This plugin is written for the [Jenkins plugin tutorial](http://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial),
-and hence it's only useful as an example, and no other
-practical use.
+This plugin is written for the [Jenkins plugin tutorial](http://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial).
+It's only useful as an example, and no other practical use.
+This branch was used for a webinar with Capital One.
 
 # Quick install
 
