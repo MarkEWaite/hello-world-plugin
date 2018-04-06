@@ -5,7 +5,7 @@
 // @Library('git-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch
 
 // @Library('github-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch
-@Library('github-modern-3.8.0@master') _ // On master, tip of branch
+@Library('github-modern-3.8.0') _ // On master, tip of branch
 
 import com.markwaite.Assert
 import com.markwaite.Build
