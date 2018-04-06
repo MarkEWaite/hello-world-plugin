@@ -2,6 +2,7 @@
 
 // @Library('git-modern-3.8.0@5093f89ac0057a471081ff5a5bf94c20f9acae97') _ // Has a branch
 @Library('git-modern-3.8.0@ba12808d4fd5b3e3889686a75d66d72eb4a45047') _ // Has no branch
+@Library('git-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch
 
 import com.markwaite.Assert
 import com.markwaite.Build
