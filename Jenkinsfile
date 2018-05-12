@@ -12,7 +12,7 @@ import com.markwaite.Build
 
 import static groovy.json.JsonOutput.*
 
-def branch = 'JENKINS-48061-no-tag-no-branch'
+def branch = 'JENKINS-48061-github-modern-no-tag-no-branch'
 def repo = 'https://github.com/MarkEWaite/hello-world-plugin'
 
 import java.util.Random
