@@ -1,0 +1,87 @@
+<project name="JENKINS-48061-no-tag-no-branch" default="increment" basedir=".">
+
+  <target name="increment" description="Increment build number">
+    <git command="pull" />
+    <buildnumber/>
+    <git command="add">
+      <args>
+        <arg value="build.number"/>
+      </args>
+    </git>
+    <exec executable="git" outputproperty="git.user.name">
+      <arg value="config"/>
+      <arg value="--get"/>
+      <arg value="user.name"/>
+    </exec>
+    <exec executable="git" outputproperty="git.user.email">
+      <arg value="config"/>
+      <arg value="--get"/>
+      <arg value="user.email"/>
+    </exec>
+    <git command="commit">
+      <args>
+        <arg value="-m"/>
+        <arg value="[${ant.project.name}] build++, was ${build.number}"/>
+        <arg value="-m"/>
+        <arg value="Committed as ${git.user.name} &lt;${git.user.email}&gt;"/>
+        <arg value="-m"/>
+        <arg value="Logged into system as ${user.name}"/>
+        <arg value="-m"/>
+        <arg value="Working directory ${user.dir}"/>
+      </args>
+    </git>
+  </target>
+
+  <!-- Info about this repository -->
+  <target name="info" description="Report info about this repo">
+    <echo>java is ${java.version}</echo>
+    <echo>user dir is ${user.dir}</echo>
+    <git command="log">
+      <args>
+        <arg value="-n"/>
+        <arg value="1"/>
+        <arg value="--format=GIT_AUTHOR_NAME=%aN"/>
+        <arg value="HEAD"/>
+      </args>
+    </git>
+    <git command="log">
+      <args>
+        <arg value="-n"/>
+        <arg value="1"/>
+        <arg value="--format=GIT_AUTHOR_EMAIL=%aE"/>
+        <arg value="HEAD"/>
+      </args>
+    </git>
+    <git command="log">
+      <args>
+        <arg value="-n"/>
+        <arg value="1"/>
+        <arg value="--format=GIT_COMMITTER_NAME=%cN"/>
+        <arg value="HEAD"/>
+      </args>
+    </git>
+    <git command="log">
+      <args>
+        <arg value="-n"/>
+        <arg value="1"/>
+        <arg value="--format=GIT_COMMITTER_EMAIL=%cE"/>
+        <arg value="HEAD"/>
+      </args>
+    </git>
+  </target>
+
+  <!-- From https://gist.github.com/davejlong/874521 -->
+  <macrodef name="git">
+    <attribute name="command" />
+    <attribute name="dir" default="" />
+    <element name="args" optional="true" />
+    <sequential>
+      <echo message="git @{command}" />
+      <exec executable="git" dir="@{dir}">
+        <arg value="@{command}" />
+        <args/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+</project>
