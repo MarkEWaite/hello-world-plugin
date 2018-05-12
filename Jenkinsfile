@@ -1,15 +1,15 @@
 #!groovy
 
-// @Library('git-modern-3.8.0@5093f89ac0057a471081ff5a5bf94c20f9acae97') _ // Has a branch
-// @Library('git-modern-3.8.0@ba12808d4fd5b3e3889686a75d66d72eb4a45047') _ // Has no branch
-// @Library('git-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch
+// @Library('git-modern-3.8.0@5093f89ac0057a471081ff5a5bf94c20f9acae97') _ // Has a branch // works
+// @Library('git-modern-3.8.0@ba12808d4fd5b3e3889686a75d66d72eb4a45047') _ // Has no branch // works
+// @Library('git-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch // works
 
-// @Library('github-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch
-// @Library('github-modern-3.8.0') _ // On master, tip of branch
+// @Library('github-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch // fails
+// @Library('github-modern-3.8.0') _ // On master, tip of branch // fails
 
-// @Library('bitbucket-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch // works
-// @Library('bitbucket-modern-3.8.0@5093f89ac0057a471081ff5a5bf94c20f9acae97') _ // Has a branch
-@Library('bitbucket-modern-3.8.0') _ // On master, tip of branch
+@Library('bitbucket-modern-3.8.0@a93c04cdc93f655b04cb54fae90780bc208b2566') _ // On master, not tip of branch // works
+// @Library('bitbucket-modern-3.8.0@5093f89ac0057a471081ff5a5bf94c20f9acae97') _ // Has a branch // works
+// @Library('bitbucket-modern-3.8.0') _ // On master, tip of branch // works
 
 import com.markwaite.Assert
 import com.markwaite.Build
