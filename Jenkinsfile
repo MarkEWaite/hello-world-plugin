@@ -13,7 +13,7 @@ subsetConfiguration = [ [ jdk: '8',  platform: 'windows', jenkins: null ],
                         [ jdk: '11', platform: 'linux',   jenkins: null ],
                       ]
 
-buildPlugin(configurations: subsetConfiguration, failFast: false, checkstyle: true, findbugs: true)
+buildPlugin(configurations: subsetConfiguration, failFast: false, checkstyle.run: true, findbugs.run: true)
 
 // See https://github.com/jenkins-infra/pipeline-library/blob/master/README.adoc
 // for detailed description of the arguments available with buildPlugin
