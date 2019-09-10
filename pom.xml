@@ -81,16 +81,18 @@
     -->
     <properties>
         <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
-        <jenkins.version>2.60.3</jenkins.version>
+        <jenkins.version>2.176.3</jenkins.version>
         <java.level>8</java.level>
         <!-- Other properties you may want to use:
              ~ jenkins-test-harness.version: Jenkins Test Harness version you use to test the plugin. For Jenkins version >= 1.580.1 use JTH 2.0 or higher.
              ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
              ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
         -->
-         <checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
-         <checkstyle.skip>false</checkstyle.skip>
-         <checkstyle.suppressions.location>config/checkstyle-suppressions.xml</checkstyle.suppressions.location>
+        <maven.checkstyle.plugin.version>3.1.0</maven.checkstyle.plugin.version>
+        <maven.checkstyle.version>8.24</maven.checkstyle.version>
+        <checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
+        <checkstyle.skip>false</checkstyle.skip>
+        <checkstyle.suppressions.location>config/checkstyle-suppressions.xml</checkstyle.suppressions.location>
     </properties>
 
     <repositories>
@@ -156,30 +158,36 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.jenkins.tools.bom</groupId>
+                <artifactId>bom</artifactId>
+                <version>2.176.1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-checkstyle-plugin</artifactId>
-                 <version>2.17</version>
-                 <configuration>
-                     <consoleOutput>true</consoleOutput>
-                     <encoding>UTF-8</encoding>
-                     <failOnViolation>true</failOnViolation>
-                     <failsOnError>true</failsOnError>
-                     <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                     <linkXRef>false</linkXRef>
-                 </configuration>
-                 <executions>
-                     <execution>
-                         <id>checkstyle-compile</id>
-                         <phase>compile</phase>
-                         <goals>
-                             <goal>check</goal>
-                         </goals>
-                     </execution>
-                 </executions>
-             </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.plugin.version}</version>
+	        <dependencies>
+	            <dependency>
+	                <groupId>com.puppycrawl.tools</groupId>
+	                <artifactId>checkstyle</artifactId>
+	                <version>${maven.checkstyle.version}</version>
+	            </dependency>
+	        </dependencies>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <failOnViolation>true</failOnViolation>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
