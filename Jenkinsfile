@@ -7,11 +7,15 @@
 // Test plugin compatbility to pom defined version (null) and latest Jenkins weekly
 // Allow failing tests to retry execution
 // Run checkstyle and save the output, mark unstable on any checkstyle warning
-// Run findbugs and save the output, mark unstable on any findbugs warning
-buildPlugin(jenkinsVersions: [null, '2.73.1', '2.78'],
-            findbugs: [run:true, archive:true, unstableTotalAll: '0'],
-            failFast: false
-           )
+// Run spotbugs and save the output, mark unstable on any spotbugs warning
+// build recommended configurations
+use_newer_jenkins = random.nextBoolean() // Use newer Jenkins on one build but slightly older on other
+subsetConfiguration = [ [ jdk: '8',  platform: 'windows', jenkins: null                      ],
+                        [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? null : '2.193', javaLevel: '8' ],
+                        [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? '2.193' : null, javaLevel: '8' ]
+                      ]
+
+buildPlugin(configurations: subsetConfiguration, failFast: false)
 
 // See https://github.com/jenkins-infra/pipeline-library/blob/master/README.adoc
 // for detailed description of the arguments available with buildPlugin
