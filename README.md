@@ -19,8 +19,8 @@ mvn -Dmaven.test.skip=true -DskipTests=true clean hpi:run
 mvn -P enable-jacoco clean test jacoco:report
 ```
 
-# Run findbugs with gui
+# Run spotbugs with gui
 
 ```
-mvn clean compile findbugs:findbugs findbugs:gui
+mvn clean compile spotbugs:spotbugs spotbugs:gui
 ```
