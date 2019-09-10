@@ -12,8 +12,8 @@
 Random random = new Random() // Randomize which Jenkins version is selected for more testing
 use_newer_jenkins = random.nextBoolean() // Use newer Jenkins on one build but slightly older on other
 subsetConfiguration = [ [ jdk: '8',  platform: 'windows', jenkins: null                      ],
-                        [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? null : '2.193', javaLevel: '8' ],
-                        [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? '2.193' : null, javaLevel: '8' ]
+                        [ jdk: '8',  platform: 'linux',   jenkins: use_newer_jenkins ? null : '2.190', javaLevel: '8' ],
+                        [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? '2.190' : null, javaLevel: '8' ]
                       ]
 
 buildPlugin(configurations: subsetConfiguration, failFast: false)
