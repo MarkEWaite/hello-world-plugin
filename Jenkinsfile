@@ -9,6 +9,7 @@
 // Run checkstyle and save the output, mark unstable on any checkstyle warning
 // Run spotbugs and save the output, mark unstable on any spotbugs warning
 // build recommended configurations
+Random random = new Random() // Randomize which Jenkins version is selected for more testing
 use_newer_jenkins = random.nextBoolean() // Use newer Jenkins on one build but slightly older on other
 subsetConfiguration = [ [ jdk: '8',  platform: 'windows', jenkins: null                      ],
                         [ jdk: '11', platform: 'linux',   jenkins: use_newer_jenkins ? null : '2.193', javaLevel: '8' ],
