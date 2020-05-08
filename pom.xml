@@ -30,7 +30,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.49</version>
+        <version>4.1</version>
         <relativePath/>
     </parent>
 
@@ -81,14 +81,14 @@
     -->
     <properties>
         <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
-        <jenkins.version>2.176.3</jenkins.version>
+        <jenkins.version>2.204.1</jenkins.version>
         <java.level>8</java.level>
         <!-- Other properties you may want to use:
              ~ jenkins-test-harness.version: Jenkins Test Harness version you use to test the plugin. For Jenkins version >= 1.580.1 use JTH 2.0 or higher.
              ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
              ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
         -->
-        <maven.checkstyle.plugin.version>3.1.0</maven.checkstyle.plugin.version>
+        <maven.checkstyle.plugin.version>3.1.1</maven.checkstyle.plugin.version>
         <maven.checkstyle.version>8.24</maven.checkstyle.version>
         <checkstyle.config.location>sun_checks.xml</checkstyle.config.location>
         <checkstyle.skip>false</checkstyle.skip>
@@ -154,10 +154,10 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom</artifactId>
-                <version>2.176.1</version>
-                <scope>import</scope>
+                <artifactId>bom-2.204.x</artifactId>
+                <version>9</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
