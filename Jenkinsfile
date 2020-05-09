@@ -10,8 +10,8 @@ choose_java = random.nextBoolean()
 java_a = choose_java ? '8' : '11'
 java_b = choose_java ? '11' : '8'
 subsetConfiguration = [ [ jdk: java_a, platform: 'windows', jenkins: null ],
-                        [ jdk: java_b, platform: 'linux',   jenkins: 2.222.3 ],
-                        [ jdk: java_b, platform: 'linux',   jenkins: 2.235 ],
+                        [ jdk: java_b, platform: 'linux',   jenkins: '2.222.3' ],
+                        [ jdk: java_b, platform: 'linux',   jenkins: '2.235' ],
                       ]
 
 buildPlugin(configurations: subsetConfiguration, failFast: false)
